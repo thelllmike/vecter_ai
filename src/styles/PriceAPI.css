@@ -1,0 +1,458 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.apiprice .container .row .bar {
+    text-align: center;
+    align-items: center;
+    border: 1px solid #1b1b1b33;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    width: 72.1%;
+}
+
+.apiprice .container .row .bar .line {
+    height: 0.9rem;
+    background-color: #1c6eb7;
+    border-radius: 15px;
+}
+
+.apiprice .container .row:nth-child(3) {
+    margin: 0 9.5vw;
+}
+
+.apiprice .container h3 {
+    font-weight: 680;
+    color: #012a68;
+}
+
+.apiprice .container p {
+    color: #b5b5b5;
+    font-size: 22px;
+    margin: 0 10vw;
+    font-weight: 450;
+}
+
+.apiprice .container .buttons {
+    font-size: 0;
+    margin-top: 2rem;
+}
+
+.apiprice .container .buttons button {
+    border: none;
+    padding: 8px 40px;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 450;
+}
+
+.apiprice .container .buttons button:nth-child(1) {
+    background-color: #1c6eb7;
+    border-radius: 20px 0 0 20px;
+}
+
+.apiprice .container .buttons button:nth-child(2) {
+    background-color: #eeeeee;
+    border-radius: 0 20px 20px 0;
+}
+
+.apiprice .container .buttons button a {
+    text-decoration: none;
+}
+
+.apiprice .container .buttons button:nth-child(1) a {
+    color: #ffffff;
+}
+
+.apiprice .container .buttons button:nth-child(2) a {
+    color: #1c6eb7;
+}
+
+.apiprice .container .row:nth-child(2) {
+    justify-content: center;
+}
+
+.apiprice .container .card {
+    width: calc(46.5% - 1px);
+    margin: 2rem 15px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+}
+
+.apiprice .container .card .title {
+    text-align: center;
+    color: #1b1b1b;
+    font-weight: 721;
+    margin: 2rem 0 1rem 0;
+}
+
+.apiprice .container .card .price {
+    font-weight: 500;
+}
+
+.apiprice .container .card .price span {
+    font-size: 0.8rem;
+    margin-bottom: 100px;
+    position: relative;
+    bottom: 2ex;
+    font-weight: 400;
+}
+
+.apiprice .container .card button {
+    border: 2px solid #69A8F5;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    width: 72%;
+    height: 2.3rem;
+    color: #69A8F5;
+    margin: 1rem 0 0.8rem 0;
+}
+
+.apiprice .container .card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.apiprice .container .card ul li {
+    padding: 0.55rem 0;
+    text-align: left;
+    display: flex;
+    margin: 0;
+}
+
+.apiprice .container .card ul li p {
+    font-size: 0.9rem;
+    text-align: left;
+    padding: 0 0.85rem;
+    margin: 0;
+}
+
+.apiprice .container .questions {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.apiprice .container .questions h3 {
+    color: #2E3C40;
+    margin: 3rem;
+}
+
+.apiprice .container .questions .card {
+    margin: 1rem 10.7vw;
+    width: auto;
+    border-radius: 0px;
+
+}
+
+.apiprice .container .questions .card h6 {
+    font-size: 1.1rem;
+    padding: 2.1rem 0.6rem;
+    color: #2E3C40;
+    font-weight: 650;
+    margin-bottom: 0;
+}
+
+.apiprice .container .questions .card i {
+    margin-left: 30vw;
+}
+
+.footer .row img {
+    padding: 0;
+    /* background-color: #1C6EB7; */
+    /* min-height: 40px; */
+}
+
+@media only screen and (max-width: 991px) {
+
+    .apiprice .container .row .bar {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        width: 72.1%;
+    }
+
+    .apiprice .container .row .bar .line {
+        height: 0.7rem;
+        background-color: #1c6eb7;
+        border-radius: 15px;
+    }
+
+    .apiprice .container .row:nth-child(3) {
+        margin: 0 8.72vw;
+    }
+
+    .apiprice .container p {
+        font-size: 18px;
+    }
+
+    .apiprice .container .buttons {
+        font-size: 0;
+        margin-top: 2rem;
+    }
+
+    .apiprice .container .buttons button {
+        padding: 6px 40px;
+        font-size: 14px;
+        font-weight: 450;
+    }
+
+    .apiprice .container .buttons button:nth-child(2) {
+        background-color: #eeeeee;
+        border-radius: 0 20px 20px 0;
+    }
+
+    .apiprice .container .buttons button a {
+        text-decoration: none;
+    }
+
+    .apiprice .container .buttons button:nth-child(1) a {
+        color: #ffffff;
+    }
+
+    .apiprice .container .buttons button:nth-child(2) a {
+        color: #1c6eb7;
+    }
+
+    .apiprice .container .card {
+        width: calc(46.5% - 1px);
+        margin: 2rem 15px;
+    }
+
+    .apiprice .container .card .title {
+        text-align: center;
+        color: #1b1b1b;
+        font-weight: 721;
+        margin: 2rem 0 1rem 0;
+        font-size: 20px;
+    }
+
+    .apiprice .container .card .price {
+        font-weight: 500;
+        font-size: 25px !important;
+    }
+
+    .apiprice .container .card {
+        width: calc(42.5% - 1px);
+        margin: 3rem 20px;
+        /* justify-content: space-between; */
+        border-radius: 0;
+    }
+
+
+    .apiprice .container .questions h3 {
+        color: #2E3C40;
+        margin: 2.5rem;
+    }
+
+
+    .apiprice .container .questions .card h6 {
+        font-size: 1rem;
+        padding: 1rem 0.4rem 1rem 0rem;
+    }
+
+    .apiprice .container .questions .card i {
+        margin-left: 18vw;
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .apiprice .container .row .bar {
+        margin: 1.5rem;
+        width: 26.5rem;
+    }
+
+    .apiprice .container .row .bar .line {
+        height: 0.7rem;
+    }
+
+    .apiprice .container .row:nth-child(3) {
+        margin: 0 5vw;
+    }
+
+    .apiprice .container .row:nth-child(3) .card {
+        margin: 0 auto;
+    }
+
+    .apiprice .container h3 {
+        font-weight: 18px;
+    }
+
+    .apiprice .container p {
+        color: #b5b5b5;
+        font-size: 16px;
+        margin: 0 10vw;
+        font-weight: 450;
+    }
+
+    .apiprice .container .row .valid-time {
+        font-size: 14px;
+    }
+
+    .apiprice .container .buttons {
+        font-size: 0;
+        margin-top: 2rem;
+    }
+
+    .apiprice .container .buttons button {
+        padding: 6px 432x;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .apiprice .container .buttons button:nth-child(1) {
+        background-color: #1c6eb7;
+        border-radius: 20px 0 0 20px;
+    }
+
+    .apiprice .container .buttons button:nth-child(2) {
+        background-color: #eeeeee;
+        border-radius: 0 20px 20px 0;
+    }
+
+    .apiprice .container .buttons button a {
+        text-decoration: none;
+    }
+
+    .apiprice .container .card {
+        width: calc(46.5% - 1px);
+        margin: 2rem 15px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+    }
+
+    .apiprice .container .card .title {
+        text-align: center;
+        color: #1b1b1b;
+        font-weight: 721;
+        margin: 2rem 0 1rem 0;
+    }
+
+    .apiprice .container .questions {
+        text-align: center;
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .apiprice .container .questions h3 {
+        color: #2E3C40;
+        margin: 3rem;
+    }
+
+    .apiprice .container .questions .card {
+        margin: 1rem 6vw;
+        width: auto;
+        border-radius: 0px;
+
+    }
+
+    .apiprice .container .questions .card h6 {
+        font-size: 0.6rem;
+        padding: 1.61rem 0.6rem;
+        font-size: 1rem;
+    }
+
+    .apiprice .container .questions .card i {
+        margin-left: 15vw;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .apiprice .container .row .bar {
+        margin: 1.5rem;
+        width: 24.5rem;
+    }
+
+    
+
+ 
+    
+
+    .apiprice .container h3 {
+        font-size: 22px;
+    }
+
+
+    .apiprice .container p {
+        font-size: 16px;
+    }
+
+    .apiprice .container .row .valid-time {
+        font-size: 14px;
+    }
+
+    .apiprice .container .buttons {
+        font-size: 0;
+        margin-top: 2rem;
+    }
+
+    .apiprice .container .buttons button {
+        padding: 6px 40px;
+        margin: 0;
+        font-size: 14px;
+    }
+
+
+    .apiprice .container .card {
+        width: calc(46.5% - 1px);
+        margin: 2rem 15px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+    }
+
+    .apiprice .container .card .title {
+        font-weight: 600;
+        font-size: large;
+    }
+
+    .apiprice .container .card button {
+        width: 71%;
+        height: 2.2rem;    
+        border-width: 2px;
+    }
+
+    .apiprice .container .card p {
+        font-size: 12px!important;
+    }
+
+    .apiprice .container .questions {
+        text-align: center;
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .apiprice .container .questions h3 {
+        color: #2E3C40;
+        margin: 3rem;
+    }
+
+    .apiprice .container .questions .card {
+        margin: 1rem 6vw;
+        width: auto;
+        border-radius: 0px;
+
+    }
+
+    .apiprice .container .questions .card h6 {
+        font-size: 0.6rem;
+        padding: 1.61rem 0.6rem;
+        font-size: 1rem;
+    }
+
+    .apiprice .container .questions .card i {
+        margin-left: 15vw;
+    }
+
+}

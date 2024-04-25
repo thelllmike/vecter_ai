@@ -1,0 +1,15 @@
+.top-bar {
+    /* position: absolute; */
+    width: 100%;
+    background-color: #1C6EB7;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-bar p {
+    color: #FFFFFF;
+    padding: 1vh;
+    margin: 0;
+}

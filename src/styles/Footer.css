@@ -1,0 +1,134 @@
+.main-footer {
+    width: 100%;
+    background: #1e2129;
+}
+
+.footer-content {
+    position: relative;
+    padding: 85px 0px 80px 0px;
+}
+
+.footer-content:before {
+    position: absolute;
+    content: "";
+    background: url(../images/footer-image.png);
+    width: 744px;
+    height: 365px;
+    top: 50px;
+    right: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footer-content .logo-widget {
+    position: relative;
+    margin-top: -5px;
+}
+
+.footer-content .logo-widget .footer-social li {
+    position: relative;
+    display: inline-block;
+    margin-right: 9px;
+}
+
+.footer-content .logo-widget .footer-social li:last-child {
+    margin-right: 0px;
+}
+
+.footer-content .logo-widget .footer-social li a {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    background: #2e3138;
+    color: #9ea0a9;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.footer-content .logo-widget .footer-social li a:hover {
+    color: #ffffff;
+    background: #ffd700;
+}
+
+.footer-content .logo-widget .logo-box img {
+    /* margin-bottom: 25px; */
+    max-width: 110px;
+
+}
+
+.footer-content .logo-widget .text p {
+    color: #9ea0a9;
+    margin-bottom: 32px;
+}
+
+.footer-content .footer-title {
+    position: relative;
+    font-size: 24px;
+    line-height: 35px;
+    font-family: "Playfair Display", serif;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 27px;
+}
+
+.footer-content .service-widget ul {
+    padding-left: 0;
+}
+
+.footer-content .service-widget .list li {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-content .service-widget .list li a {
+    position: relative;
+    display: inline-block;
+    color: #9ea0a9;
+}
+
+.footer-content .service-widget .list li a:hover {
+    color: #ffd700;
+}
+
+.footer-content .contact-widget p {
+    color: #9ea0a9;
+    margin-bottom: 15px;
+}
+
+.footer-content .text {
+    position: relative;
+}
+
+@media only screen and (max-width: 992px) {
+    .footer-content .footer-title {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .main-footer .footer-column {
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-footer .footer-content:before {
+        /* display: block; */
+        position: absolute;
+        margin-top: 10rem;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .main-footer .footer-column:not(.footer-column:nth-child(1)) {
+        width: 100%;
+        margin: 0!important;
+    }
+
+    .main-footer .footer-widget {
+        text-align:center;
+
+    }
+}

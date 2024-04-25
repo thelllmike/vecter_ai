@@ -1,0 +1,147 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.priceweb .container h3 {
+    font-weight: 680;
+    color: #012a68;
+}
+
+.priceweb .container p {
+    color: #b5b5b5;
+    font-size: 22px;
+    margin: 0 10vw;
+    font-weight: 450;
+}
+
+.priceweb .container .buttons {
+    font-size: 0;
+    margin-top: 2rem;
+}
+
+.priceweb .container .buttons button {
+    border: none;
+    padding: 8px 40px;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 450;
+}
+
+.priceweb .container .buttons button:nth-child(1) {
+    background-color: #1c6eb7;
+    border-radius: 20px 0 0 20px;
+}
+
+.priceweb .container .buttons button:nth-child(2) {
+    background-color: #eeeeee;
+    border-radius: 0 20px 20px 0;
+}
+
+.priceweb .container .buttons button a {
+    text-decoration: none;
+}
+
+.priceweb .container .buttons button:nth-child(1) a {
+    color: #ffffff;
+}
+
+.priceweb .container .buttons button:nth-child(2) a {
+    color: #1c6eb7;
+}
+
+.priceweb .container .row:nth-child(2) {
+    justify-content: center;
+}
+
+.priceweb .container .card {
+    width: calc(23.5% - 15px);
+    margin: 2rem 15px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.priceweb .container .card .title {
+    text-align: center;
+    color: #1b1b1b;
+    font-weight: 721;
+}
+
+.priceweb .container .card .price {
+    font-weight: 500;
+}
+
+.priceweb .container .card .price span {
+    font-size: 0.8rem;
+    margin-bottom: 100px;
+    position: relative;
+    bottom: 2ex;
+    font-weight: 400;
+}
+
+.priceweb .container .card button {
+    border: 2px solid #69A8F5;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    width: 72%;
+    height: 2.3rem;
+    color: #69A8F5;
+    margin: 1rem 0 0.8rem 0;
+}
+
+.priceweb .container .card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.priceweb .container .card ul li {
+    padding: 0.55rem 0;
+    text-align: left;
+    display: flex;
+    margin: 0;
+}
+
+.priceweb .container .card ul li p {
+    font-size: 0.9rem;
+    text-align: left;
+    padding: 0 0.85rem;
+    margin: 0;
+}
+
+.priceweb .container .questions {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.priceweb .container .questions h3 {
+    color: #2E3C40;
+    margin: 3rem;
+}
+
+.priceweb .container .questions .card {
+    margin: 1rem 10.7vw;
+    width: auto;
+    border-radius: 0px;
+   
+}
+.priceweb .container .questions .card h6 {
+    font-size: 1.1rem;
+    padding: 2.1rem 0.6rem;
+    color: #2E3C40;
+    font-weight: 650;
+    margin-bottom: 0;
+}
+
+.priceweb .container .questions .card i {
+    margin-left: 30vw;
+}
+
+.footer .row img{
+    padding: 0;
+    /* background-color: #1C6EB7; */
+    /* min-height: 40px; */
+}
