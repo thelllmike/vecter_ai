@@ -1,36 +1,40 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import React from "react";
+import Navbar from "../components/Navbar";
 import "../styles/Homepage.css";
-import actionImage from '../images/action-image.svg';
-import vectorImage from '../images/Vector.svg';
-import exampleImage from '../images/example.svg';
-import vectorImage1 from '../images/Vector (1).svg';
-import rectangleImage1 from '../images/Rectangle (1).svg';
-import rectangleImage2 from '../images/Rectangle (2).svg';
-import rectangleImage3 from '../images/Rectangle (3).svg';
-import bottomImage from '../images/bottom-image.svg';
-import footerImage from '../images/footer.jpg';
-import { NavLink } from 'react-router-dom';
+import actionImage from "../images/action-image.svg";
+import vectorImage from "../images/Vector.svg";
+import exampleImage from "../images/example.svg";
+import vectorImage1 from "../images/Vector (1).svg";
+import rectangleImage1 from "../images/Rectangle (1).svg";
+import rectangleImage2 from "../images/Rectangle (2).svg";
+import rectangleImage3 from "../images/Rectangle (3).svg";
+import bottomImage from "../images/bottom-image.svg";
+import footerImage from "../images/footer.jpg";
+import { NavLink } from "react-router-dom";
+import { Button } from "../components/ui/button";
 
 const Homepage = () => {
   return (
     <div>
       <Navbar />
-
-      <div className="container">
-      </div>
-
-      <div className="top-title mt-5 fs-3">
-        <h3>CONVERT IMAGES INTO VECTORS IN FULLCOLOR</h3>
-        <p className="mt-4">Easily transform your PNG and JPG images into SVG vectors with seamless automation powered AI.</p>
+      <div className="container py-10 text-center">
+        <h3 className=" text-xl font-bold text-theme-DarkBlue lg:text-3xl">
+          CONVERT IMAGES INTO VECTORS IN FULLCOLOR
+        </h3>
+        <p className="text-theme-DarkGray mx-auto mt-6 max-w-2xl text-lg font-medium lg:text-xl">
+          Easily transform your PNG and JPG images into SVG vectors with
+          seamless automation powered AI.
+        </p>
       </div>
 
       <div className="upload-section mt-2">
         <div className="dot-square">
-          <button className="mt-5"><NavLink to="/uploadimage"> UPLOAD IMAGE</NavLink></button>
-          <div className="drag-image-text mt-4">
-            DRAG IMAGE HERE
-          </div>
+          <Button></Button>
+
+          {/* <button className="mt-5">
+            <NavLink to="/uploadimage"> UPLOAD IMAGE</NavLink>
+          </button> */}
+          <div className="drag-image-text mt-4">DRAG IMAGE HERE</div>
         </div>
       </div>
 
@@ -86,7 +90,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="container bottom">
+      <div className="bottom container">
         <div className="row">
           <h3>Auto-convert your images to full color vectors for your needs</h3>
         </div>
@@ -102,6 +106,6 @@ const Homepage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Homepage;
