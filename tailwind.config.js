@@ -33,6 +33,7 @@ module.exports = {
       },
       colors: {
         "theme-LightBlue": "#1c6eb7",
+        "theme-Blue": "#69a8f5",
         "theme-DarkBlue": "#022b68",
         "theme-LightGray": "#eeeeee",
         "theme-DarkGray": "#919191",

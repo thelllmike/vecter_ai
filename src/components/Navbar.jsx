@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="d-flex items-center justify-center bg-theme-LightBlue p-2 text-white">
+      <div className="d-flex items-center justify-center bg-theme-LightBlue p-4 text-white lg:p-2">
         <p>
           GRATE VALUE FOR A FRACTION OF THE COST, PLUS FREE ACCESS DURING THE
           BETA PHASE
