@@ -48,12 +48,12 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-link">
-                <NavLink aria-current="page" to="/homepage">
+                <NavLink aria-current="page" to="/apidoc/start">
                   API
                 </NavLink>
               </li>
               <li className="nav-link">
-                <NavLink aria-current="page" to="/homepage">
+                <NavLink aria-current="page" to="/support">
                   Support
                 </NavLink>
               </li>
