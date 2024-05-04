@@ -1,8 +1,10 @@
-.sidenav ul li a.active {
+.sidenav ul li a.active,
+.sidenavMob ul li a.active {
   color: #ffff;
   background-color: #1c6eb7;
 }
 
-.sidenav ul li a:not(.active) {
+.sidenav ul li a:not(.active),
+.sidenavMob ul li a:not(.active) {
   padding-left: 0px;
 }

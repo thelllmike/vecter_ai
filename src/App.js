@@ -7,6 +7,8 @@ import PriceWeb from "./pages/PriceWeb";
 import Editpage from "./pages/Editpage";
 import APIDoc from "./pages/APIDoc";
 import Support from "./pages/Support";
+import Loginpage from "./pages/Loginpage";
+import Register from "./pages/Register";
 import UploadImagepage from "./pages/UploadImagepage";
 import QuickStart from "./pages/APIPages/QuickStart";
 import Pricing from "./pages/APIPages/Pricing";
@@ -45,6 +47,8 @@ function App() {
               <Route path="error-responses" element={<ErrorResponses />} />
             </Route>
             <Route path="/support" element={<Support />} />
+            <Route path="/login" element={<Loginpage />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </main>
       </Router>

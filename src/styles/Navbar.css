@@ -25,6 +25,11 @@ nav .container ul li.nav-link a.active {
   border-bottom: 3px solid #1c6eb7;
 }
 
+ul.mobileNav li.nav-link a.active {
+  color: #ffff;
+  background-color: #1c6eb7;
+}
+
 .top-bar p {
   color: #ffffff;
   padding: 0;

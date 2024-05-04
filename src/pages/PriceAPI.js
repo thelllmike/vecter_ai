@@ -49,7 +49,7 @@ const PriceAPI = () => {
           </div>
         </div>
         <div className="container mt-10 max-w-[1024px] ">
-          <div className=" mb-8 border-[1px] border-theme-DarkGray p-16">
+          <div className=" mb-8 border-[1px] border-theme-DarkGray px-8 py-16 lg:p-16">
             <Slider defaultValue={[30]} max={100} step={1} />
           </div>
           <div class="grid gap-4 lg:grid-cols-2 lg:gap-8">
@@ -69,7 +69,7 @@ const PriceAPI = () => {
                   /Month (cancel anytime)
                 </CardDescription>
                 <div className="mt-6">
-                  <Button className=" border-theme-Blue text-theme-Blue hover:bg-theme-Blue gap-2 border-2 bg-white hover:bg-opacity-5">
+                  <Button className=" gap-2 border-2 border-theme-Blue bg-white text-theme-Blue hover:bg-theme-Blue hover:bg-opacity-5">
                     Continue <i class="fa-solid fa-arrow-right"></i>
                   </Button>
                 </div>
@@ -95,7 +95,7 @@ const PriceAPI = () => {
                 </p>
                 <CardDescription className="mt-6">One Time</CardDescription>
                 <div className="mt-6">
-                  <Button className=" border-theme-Blue text-theme-Blue hover:bg-theme-Blue gap-2 border-2 bg-white hover:bg-opacity-5">
+                  <Button className=" gap-2 border-2 border-theme-Blue bg-white text-theme-Blue hover:bg-theme-Blue hover:bg-opacity-5">
                     Continue <i class="fa-solid fa-arrow-right"></i>
                   </Button>
                 </div>

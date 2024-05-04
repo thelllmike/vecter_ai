@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "../styles/Navbar.css";
+import { useMediaQuery } from "../Hooks/use-media-query";
 import { NavLink } from "react-router-dom";
 import logo from "../images/Group 14.svg";
 
-const Navbar = () => {
-  const [clicked, setClicked] = useState(false);
+import { Drawer, DrawerContent, DrawerTrigger, DrawerClose } from "./ui/drawer";
+import { ScrollArea } from "./ui/scroll-area";
 
-  return (
+const Navbar = () => {
+  const isDesktop = useMediaQuery("(min-width: 992px)");
+
+  return isDesktop ? (
     <div>
       <div className="d-flex items-center justify-center bg-theme-LightBlue p-4 text-white lg:p-2">
         <p>
@@ -19,22 +23,6 @@ const Navbar = () => {
           <NavLink className="" to="/">
             <img src={logo} alt="logo" className="img-fluid" />
           </NavLink>
-          <button
-            className="flex pt-2 lg:hidden"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            onClick={() => setClicked(!clicked)}
-          >
-            <i
-              className={
-                "text-[24px] " + (clicked ? "fas fa-times" : "fas fa-bars")
-              }
-            ></i>
-          </button>
           <div className="hidden flex-col lg:flex lg:flex-1 lg:flex-row lg:justify-between">
             <ul className="flex items-center gap-5 text-theme-DarkBlue">
               <li className="nav-link">
@@ -60,18 +48,117 @@ const Navbar = () => {
             </ul>
             <ul className="flex items-center gap-2 text-theme-DarkBlue">
               <li>
-                <NavLink aria-current="page" to="/contactus">
+                <NavLink aria-current="page" to="/login">
                   Login
                 </NavLink>
               </li>
               <span>|</span>
               <li>
-                <NavLink aria-current="page" to="/contactus">
+                <NavLink aria-current="page" to="/register">
                   Register
                 </NavLink>
               </li>
             </ul>
           </div>
+        </div>
+      </nav>
+    </div>
+  ) : (
+    <div>
+      <div className="d-flex items-center justify-center bg-theme-LightBlue p-4 text-white lg:p-2">
+        <p>
+          GRATE VALUE FOR A FRACTION OF THE COST, PLUS FREE ACCESS DURING THE
+          BETA PHASE
+        </p>
+      </div>
+      <nav className="bg-theme-LightGray">
+        <div className="container flex w-auto items-center justify-between gap-8 px-4 py-2 lg:mx-[200px] lg:justify-start lg:px-0">
+          <NavLink className="" to="/">
+            <img src={logo} alt="logo" className="img-fluid" />
+          </NavLink>
+          <Drawer direction="right">
+            <DrawerTrigger>
+              <i className={"fas fa-bars text-[24px]"}></i>
+            </DrawerTrigger>
+            <DrawerContent className=" rounded-none">
+              <ScrollArea className="h-full">
+                <ul className="mobileNav mt-6 flex flex-col items-start text-theme-DarkBlue">
+                  <li className="nav-link w-full">
+                    <DrawerClose asChild>
+                      <NavLink
+                        className="flex w-full items-center gap-2 p-2"
+                        aria-current="page"
+                        to="/"
+                      >
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                      </NavLink>
+                    </DrawerClose>
+                  </li>
+                  <li className="nav-link w-full">
+                    <DrawerClose asChild>
+                      <NavLink
+                        className="flex w-full items-center gap-2 p-2"
+                        aria-current="page"
+                        to="/priceweb"
+                      >
+                        <i class="fa-solid fa-tag"></i>
+                        Pricing
+                      </NavLink>
+                    </DrawerClose>
+                  </li>
+                  <li className="nav-link w-full">
+                    <DrawerClose asChild>
+                      <NavLink
+                        className="flex w-full items-center gap-2 p-2"
+                        aria-current="page"
+                        to="/apidoc/start"
+                      >
+                        <i class="fa-solid fa-code"></i>
+                        API
+                      </NavLink>
+                    </DrawerClose>
+                  </li>
+                  <li className="nav-link w-full">
+                    <DrawerClose asChild>
+                      <NavLink
+                        className="flex w-full items-center gap-2 p-2"
+                        aria-current="page"
+                        to="/support"
+                      >
+                        <i class="fa-solid fa-circle-info"></i>
+                        Support
+                      </NavLink>
+                    </DrawerClose>
+                  </li>
+                </ul>
+                <ul className="mt-6 flex flex-col items-start text-theme-DarkBlue">
+                  <li className="w-full">
+                    <DrawerClose asChild>
+                      <NavLink
+                        className="flex w-full items-center gap-2 p-2"
+                        aria-current="page"
+                        to="/login"
+                      >
+                        Login
+                      </NavLink>
+                    </DrawerClose>
+                  </li>
+                  <li className="w-full">
+                    <DrawerClose asChild>
+                      <NavLink
+                        className="flex w-full items-center gap-2 p-2"
+                        aria-current="page"
+                        to="/register"
+                      >
+                        Register
+                      </NavLink>
+                    </DrawerClose>
+                  </li>
+                </ul>
+              </ScrollArea>
+            </DrawerContent>
+          </Drawer>
         </div>
       </nav>
     </div>
