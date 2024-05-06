@@ -3,12 +3,22 @@ import "../styles/Navbar.css";
 import { useMediaQuery } from "../Hooks/use-media-query";
 import { NavLink } from "react-router-dom";
 import logo from "../images/Group 14.svg";
-
-import { Drawer, DrawerContent, DrawerTrigger, DrawerClose } from "./ui/drawer";
 import { ScrollArea } from "./ui/scroll-area";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetClose,
+  SheetTrigger,
+} from "../components/ui/sheet";
 
 const Navbar = () => {
   const isDesktop = useMediaQuery("(min-width: 992px)");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSheet = () => {
+    setIsOpen(!isOpen);
+  };
 
   return isDesktop ? (
     <div>
@@ -76,15 +86,20 @@ const Navbar = () => {
           <NavLink className="" to="/">
             <img src={logo} alt="logo" className="img-fluid" />
           </NavLink>
-          <Drawer direction="right">
-            <DrawerTrigger>
-              <i className={"fas fa-bars text-[24px]"}></i>
-            </DrawerTrigger>
-            <DrawerContent className=" rounded-none">
+
+          <Sheet>
+            <SheetTrigger open={isOpen} onOpenChange={setIsOpen}>
+              {isOpen ? (
+                <i className={"fas fa-times text-[24px]"}></i>
+              ) : (
+                <i className={"fas fa-bars text-[24px]"}></i>
+              )}
+            </SheetTrigger>
+            <SheetContent className="p-0">
               <ScrollArea className="h-full">
                 <ul className="mobileNav mt-6 flex flex-col items-start text-theme-DarkBlue">
                   <li className="nav-link w-full">
-                    <DrawerClose asChild>
+                    <SheetClose asChild>
                       <NavLink
                         className="flex w-full items-center gap-2 p-2"
                         aria-current="page"
@@ -93,10 +108,10 @@ const Navbar = () => {
                         <i class="fa-solid fa-house"></i>
                         Home
                       </NavLink>
-                    </DrawerClose>
+                    </SheetClose>
                   </li>
                   <li className="nav-link w-full">
-                    <DrawerClose asChild>
+                    <SheetClose asChild>
                       <NavLink
                         className="flex w-full items-center gap-2 p-2"
                         aria-current="page"
@@ -105,10 +120,10 @@ const Navbar = () => {
                         <i class="fa-solid fa-tag"></i>
                         Pricing
                       </NavLink>
-                    </DrawerClose>
+                    </SheetClose>
                   </li>
                   <li className="nav-link w-full">
-                    <DrawerClose asChild>
+                    <SheetClose asChild>
                       <NavLink
                         className="flex w-full items-center gap-2 p-2"
                         aria-current="page"
@@ -117,10 +132,10 @@ const Navbar = () => {
                         <i class="fa-solid fa-code"></i>
                         API
                       </NavLink>
-                    </DrawerClose>
+                    </SheetClose>
                   </li>
                   <li className="nav-link w-full">
-                    <DrawerClose asChild>
+                    <SheetClose asChild>
                       <NavLink
                         className="flex w-full items-center gap-2 p-2"
                         aria-current="page"
@@ -129,12 +144,12 @@ const Navbar = () => {
                         <i class="fa-solid fa-circle-info"></i>
                         Support
                       </NavLink>
-                    </DrawerClose>
+                    </SheetClose>
                   </li>
                 </ul>
                 <ul className="mt-6 flex flex-col items-start text-theme-DarkBlue">
                   <li className="w-full">
-                    <DrawerClose asChild>
+                    <SheetClose asChild>
                       <NavLink
                         className="flex w-full items-center gap-2 p-2"
                         aria-current="page"
@@ -142,10 +157,10 @@ const Navbar = () => {
                       >
                         Login
                       </NavLink>
-                    </DrawerClose>
+                    </SheetClose>
                   </li>
                   <li className="w-full">
-                    <DrawerClose asChild>
+                    <SheetClose asChild>
                       <NavLink
                         className="flex w-full items-center gap-2 p-2"
                         aria-current="page"
@@ -153,12 +168,12 @@ const Navbar = () => {
                       >
                         Register
                       </NavLink>
-                    </DrawerClose>
+                    </SheetClose>
                   </li>
                 </ul>
               </ScrollArea>
-            </DrawerContent>
-          </Drawer>
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
     </div>

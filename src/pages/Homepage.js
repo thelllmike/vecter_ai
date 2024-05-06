@@ -147,7 +147,7 @@ const Homepage = () => {
           How it Works
         </h3>
         <div className="container">
-          <div className="flex flex-wrap justify-center gap-8 md:items-start md:gap-16 lg:items-end lg:justify-between">
+          <div className="flex flex-col justify-center gap-8 md:flex-row md:flex-wrap md:items-start md:gap-16 lg:items-end lg:justify-between">
             <div className="flex flex-col items-center gap-8">
               <img src={rectangleImage1} alt="Rectangle 1" />
               <div className="flex flex-col items-center gap-2">
