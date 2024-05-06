@@ -87,7 +87,7 @@ const EditImageSideToolBar = () => {
           <TabsContent value="custom">Custom</TabsContent>
         </Tabs>
       </div>
-      <div className="mt-4 flex flex-col items-center gap-2 text-left">
+      <div className="mt-10 flex flex-col items-center gap-2 text-left">
         <Button className="w-full bg-theme-LightBlue hover:bg-theme-DarkBlue">
           Vectorize
         </Button>

@@ -16,8 +16,8 @@ const UploadImagepage = () => {
     <div className="uploadimagepage">
       <EditImageTopToolBar clicked={clicked} setClicked={setClicked} />
       <div className="grid gap-2 lg:grid-cols-12 lg:gap-0">
-        <div className="lg:col-span-9">
-          <div className="canvas h-full w-full bg-slate-500 p-6">
+        <div className="lg:col-span-10">
+          <div className="canvas h-[50vh] w-full bg-slate-500 p-6 lg:h-screen">
             <div className="grid grid-cols-12 gap-2">
               {!clicked && (
                 <div className="col-span-6">
@@ -34,7 +34,7 @@ const UploadImagepage = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-2">
           <EditImageSideToolBar />
         </div>
       </div>
