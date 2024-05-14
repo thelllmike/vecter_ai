@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import or from "../images/or.png";
-import vectorImg from "../images/vector-image.png";
-import share from "../images/editpage/Share.svg";
-import youtube from "../images/editpage/YouTube.svg";
+import axios from "axios";
 import "../styles/Uploadimagepage.css";
 
 import EditImageTopToolBar from "../components/EditImageTopToolBar";
@@ -12,22 +9,78 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const UploadImagepage = () => {
   const [clicked, setClicked] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+  const [vectorizedImage, setVectorizedImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleImageUpload = (imageData, file) => {
+    setUploadedImageUrl(imageData);
+    setUploadedFile(file);
+  };
+
+  const handleVectorize = async () => {
+    if (!uploadedFile) return;
+
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", uploadedFile);
+
+      const retryRequest = async (retries) => {
+        try {
+          const res = await axios.post("http://127.0.0.1:8001/upload/", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            responseType: "blob",
+          });
+
+          const svgBlob = new Blob([res.data], { type: "image/svg+xml" });
+          const svgUrl = URL.createObjectURL(svgBlob);
+          setVectorizedImage(svgUrl);
+        } catch (error) {
+          if (retries > 0) {
+            console.log(`Retrying... (${retries} attempts left)`);
+            await new Promise((res) => setTimeout(res, 1000)); // Wait 1 second before retrying
+            await retryRequest(retries - 1);
+          } else {
+            console.error("Error vectorizing image:", error);
+          }
+        }
+      };
+
+      await retryRequest(3); // Retry up to 3 times
+    } catch (error) {
+      console.error("Error vectorizing image:", error);
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="uploadimagepage">
-      <EditImageTopToolBar clicked={clicked} setClicked={setClicked} />
+      <EditImageTopToolBar
+        clicked={clicked}
+        setClicked={setClicked}
+        onImageUpload={(imageData, file) => handleImageUpload(imageData, file)}
+      />
       <div className="grid gap-2 lg:grid-cols-12 lg:gap-0">
         <div className="lg:col-span-10">
           <div className="canvas h-[50vh] w-full bg-slate-500 p-6 lg:h-screen">
             <div className="grid grid-cols-12 gap-2">
-              {!clicked && (
+              {!clicked && uploadedImageUrl && !vectorizedImage && (
                 <div className="col-span-6">
-                  <img src={or} alt="" />
+                  <img src={uploadedImageUrl} alt="Uploaded" />
                 </div>
               )}
               <div className={clicked ? "col-span-12" : "col-span-6"}>
-                <TransformWrapper className=" w-full">
+                <TransformWrapper className="w-full">
                   <TransformComponent>
-                    <img src={vectorImg} alt="" />
+                    {vectorizedImage ? (
+                      <img src={vectorizedImage} alt="Vectorized" />
+                    ) : (
+                      uploadedImageUrl && <img src={uploadedImageUrl} alt="Uploaded" />
+                    )}
                   </TransformComponent>
                 </TransformWrapper>
               </div>
@@ -35,9 +88,10 @@ const UploadImagepage = () => {
           </div>
         </div>
         <div className="lg:col-span-2">
-          <EditImageSideToolBar />
+          <EditImageSideToolBar onVectorize={handleVectorize} />
         </div>
       </div>
+      {loading && <p>Loading...</p>}
     </div>
   );
 };

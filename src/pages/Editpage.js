@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import vectorimage from '../images/vector-image.svg';
-import Navbar from '../components/Navbar';
 import '../styles/Editpage.css';
+import '../styles/React-toggleSwitch.css';
+
 import icon1 from '../images/editpage/1.svg';
 import icon2 from '../images/editpage/2.svg';
 import icon3 from '../images/editpage/3.svg';
@@ -15,18 +15,30 @@ import icon10 from '../images/editpage/10.svg';
 import icon11 from '../images/editpage/11.svg';
 import share from '../images/editpage/Share.svg';
 import youtube from '../images/editpage/YouTube.svg';
-import '../styles/React-toggleSwitch.css'
-import unlimited from '../images/unlimited.svg'
-import custom from '../images/custom.svg'
+import unlimited from '../images/unlimited.svg';
+import custom from '../images/custom.svg';
+
 const Editpage = () => {
     const [zoomLevel, setZoomLevel] = useState(1);
     const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isToggled, setIsToggled] = useState(false);
+    const [uploadedImage, setUploadedImage] = useState(null);
+
     const containerRef = useRef(null);
     const imageRef = useRef(null);
 
-    const [isToggled, setIsToggled] = useState(false);
-
     const onToggle = () => setIsToggled(!isToggled);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setUploadedImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const handleScroll = (e) => {
         const delta = e.deltaY * -0.01;
@@ -72,61 +84,68 @@ const Editpage = () => {
 
     return (
         <div className='editpage'>
-          
-                <div className="top-toolbar">
-                    <div className="tools">
-                        <img src={icon1} alt="" />
-                        <img src={icon2} alt="" />
-                        <img src={icon3} alt="" />
-                        <img src={icon4} alt="" />
-                        <img src={icon5} alt="" />
-                        <img src={icon6} alt="" />
-                        <img src={icon7} alt="" />
-                        <img src={icon8} alt="" />
-                        <img src={icon9} alt="" />
-                        <img src={icon10} alt="" />
-                        <img src={icon11} alt="" />
-                    </div>
-                    <h3 className="h5">Edit Segmented Image</h3>
-                    <button>Cancel</button>
-                    <button>Save</button>
-                    <div className="right-toolbar">
-                        <img src={share} alt="" /><img src={youtube} alt="" />
-                    </div>
+            <div className="top-toolbar">
+                <div className="tools">
+                    <label htmlFor="file-upload" className="cursor-pointer">
+                        <img src={icon1} alt="Upload" />
+                    </label>
+                    <input
+                        id="file-upload"
+                        type="file"
+                        className="hidden"
+                        onChange={handleFileChange}
+                    />
+                    <img src={icon2} alt="icon2" />
+                    <img src={icon3} alt="icon3" />
+                    <img src={icon4} alt="icon4" />
+                    <img src={icon5} alt="icon5" />
+                    <img src={icon6} alt="icon6" />
+                    <img src={icon7} alt="icon7" />
+                    <img src={icon8} alt="icon8" />
+                    <img src={icon9} alt="icon9" />
+                    <img src={icon10} alt="icon10" />
+                    <img src={icon11} alt="icon11" />
                 </div>
-            
-            <div className="container-fluid " ref={containerRef}>
+                <h3 className="h5">Edit Segmented Image</h3>
+                <button>Cancel</button>
+                <button>Save</button>
+                <div className="right-toolbar">
+                    <img src={share} alt="Share" />
+                    <img src={youtube} alt="YouTube" />
+                </div>
+            </div>
+            <div className="container-fluid" ref={containerRef}>
                 <div className="row">
                     <div className="col-9">
-                        <div className="scroll ">
-                            <div onWheel={handleScroll} >
-                                <img
-                                    ref={imageRef}
-                                    src= {vectorimage}
-                                    alt="Editable"
-                                    style={{
-                                        transform: `scale(${zoomLevel})`,
-                                        cursor: 'grab',
-                                        position: 'absolute',
-                                        left: `${position.x}px`,
-                                        top: `${position.y}px`,
-                                    }}
-                                    onMouseDown={handleMouseDown}
-                                />
+                        <div className="scroll">
+                            <div onWheel={handleScroll}>
+                                {uploadedImage && (
+                                    <img
+                                        ref={imageRef}
+                                        src={uploadedImage}
+                                        alt="Editable"
+                                        style={{
+                                            transform: `scale(${zoomLevel})`,
+                                            cursor: 'grab',
+                                            position: 'absolute',
+                                            left: `${position.x}px`,
+                                            top: `${position.y}px`,
+                                        }}
+                                        onMouseDown={handleMouseDown}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
-
                     <div className="col-3">
                         <div className="right-side-tool">
                             <div className="details">
                                 <h4 className='h4'>Details</h4>
-                                <select name="" id="">
-                                    <option value="">High</option>
-                                    <option value="">Average</option>
-                                    <option value="">Low</option>
+                                <select name="details" id="details">
+                                    <option value="high">High</option>
+                                    <option value="average">Average</option>
+                                    <option value="low">Low</option>
                                 </select>
-
                             </div>
                             <div className="bg-transparent">
                                 <h4>BG Transparent</h4>
@@ -165,12 +184,12 @@ const Editpage = () => {
                             <div className="row">
                                 <div className="col-6">
                                     <button>
-                                        <img src={unlimited} alt="" />Unlimited
+                                        <img src={unlimited} alt="Unlimited" />Unlimited
                                     </button>
                                 </div>
                                 <div className="col-6">
                                     <button>
-                                        <img src={custom} alt="" />Custom
+                                        <img src={custom} alt="Custom" />Custom
                                     </button>
                                 </div>
                             </div>
@@ -208,11 +227,12 @@ const Editpage = () => {
                                     <span className={`react-switch-button`} />
                                 </label>
                             </div>
-                            <div className="file-format">  <h4>File Format</h4>
-                                <select name="" id="">
-                                    <option value="">SVG</option>
-                                    <option value="">JPG</option>
-                                    <option value="">PNG</option>
+                            <div className="file-format">
+                                <h4>File Format</h4>
+                                <select name="fileFormat" id="fileFormat">
+                                    <option value="svg">SVG</option>
+                                    <option value="jpg">JPG</option>
+                                    <option value="png">PNG</option>
                                 </select>
                             </div>
                         </div>

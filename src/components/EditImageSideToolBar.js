@@ -1,5 +1,4 @@
 import React from "react";
-
 import unlimited from "../images/unlimited.svg";
 import custom from "../images/custom.svg";
 
@@ -15,7 +14,7 @@ import { Switch } from "./ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Button } from "./ui/button";
 
-const EditImageSideToolBar = () => {
+const EditImageSideToolBar = ({ onVectorize }) => {
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex items-center justify-between gap-4 text-left">
@@ -78,8 +77,8 @@ const EditImageSideToolBar = () => {
                   <SelectValue placeholder="SVG" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="medium">JPG</SelectItem>
-                  <SelectItem value="low">PNG</SelectItem>
+                  <SelectItem value="jpg">JPG</SelectItem>
+                  <SelectItem value="png">PNG</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -88,7 +87,10 @@ const EditImageSideToolBar = () => {
         </Tabs>
       </div>
       <div className="mt-10 flex flex-col items-center gap-2 text-left">
-        <Button className="w-full bg-theme-LightBlue hover:bg-theme-DarkBlue">
+        <Button
+          className="w-full bg-theme-LightBlue hover:bg-theme-DarkBlue"
+          onClick={onVectorize}
+        >
           Vectorize
         </Button>
         <Button
