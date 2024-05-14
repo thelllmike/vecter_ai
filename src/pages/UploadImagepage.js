@@ -17,6 +17,7 @@ const UploadImagepage = () => {
   const handleImageUpload = (imageData, file) => {
     setUploadedImageUrl(imageData);
     setUploadedFile(file);
+    setVectorizedImage(null); // Clear the vectorized image when a new image is uploaded
   };
 
   const handleVectorize = async () => {
@@ -68,22 +69,26 @@ const UploadImagepage = () => {
         <div className="lg:col-span-10">
           <div className="canvas h-[50vh] w-full bg-slate-500 p-6 lg:h-screen">
             <div className="grid grid-cols-12 gap-2">
-              {!clicked && uploadedImageUrl && !vectorizedImage && (
+              {/* Display original uploaded image on the left side */}
+              {uploadedImageUrl && (
                 <div className="col-span-6">
-                  <img src={uploadedImageUrl} alt="Uploaded" />
+                  <TransformWrapper className="w-full">
+                    <TransformComponent>
+                      <img src={uploadedImageUrl} alt="Uploaded" />
+                    </TransformComponent>
+                  </TransformWrapper>
                 </div>
               )}
-              <div className={clicked ? "col-span-12" : "col-span-6"}>
-                <TransformWrapper className="w-full">
-                  <TransformComponent>
-                    {vectorizedImage ? (
+              {/* Display vectorized image on the right side */}
+              {vectorizedImage && (
+                <div className="col-span-6">
+                  <TransformWrapper className="w-full">
+                    <TransformComponent>
                       <img src={vectorizedImage} alt="Vectorized" />
-                    ) : (
-                      uploadedImageUrl && <img src={uploadedImageUrl} alt="Uploaded" />
-                    )}
-                  </TransformComponent>
-                </TransformWrapper>
-              </div>
+                    </TransformComponent>
+                  </TransformWrapper>
+                </div>
+              )}
             </div>
           </div>
         </div>
