@@ -12,12 +12,15 @@ const UploadImagepage = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
   const [vectorizedImage, setVectorizedImage] = useState(null);
+  const [convertedImage, setConvertedImage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [fileFormat, setFileFormat] = useState("svg");
 
   const handleImageUpload = (imageData, file) => {
     setUploadedImageUrl(imageData);
     setUploadedFile(file);
     setVectorizedImage(null); // Clear the vectorized image when a new image is uploaded
+    setConvertedImage(null); // Clear the converted image when a new image is uploaded
   };
 
   const handleVectorize = async () => {
@@ -40,6 +43,12 @@ const UploadImagepage = () => {
           const svgBlob = new Blob([res.data], { type: "image/svg+xml" });
           const svgUrl = URL.createObjectURL(svgBlob);
           setVectorizedImage(svgUrl);
+
+          if (fileFormat !== "svg") {
+            convertImageFormat(svgBlob, fileFormat);
+          } else {
+            setConvertedImage(svgUrl); // If SVG is selected, use the SVG URL directly
+          }
         } catch (error) {
           if (retries > 0) {
             console.log(`Retrying... (${retries} attempts left)`);
@@ -56,6 +65,34 @@ const UploadImagepage = () => {
       console.error("Error vectorizing image:", error);
     }
     setLoading(false);
+  };
+
+  const convertImageFormat = async (svgBlob, format) => {
+    const img = new Image();
+    const svgUrl = URL.createObjectURL(svgBlob);
+
+    img.onload = async () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+
+      const dataUrl = canvas.toDataURL(`image/${format}`);
+      setConvertedImage(dataUrl);
+      URL.revokeObjectURL(svgUrl);
+    };
+
+    img.src = svgUrl;
+  };
+
+  const handleDownload = () => {
+    if (!convertedImage) return;
+
+    const link = document.createElement("a");
+    link.href = convertedImage;
+    link.download = `vectorized_image.${fileFormat}`;
+    link.click();
   };
 
   return (
@@ -93,7 +130,11 @@ const UploadImagepage = () => {
           </div>
         </div>
         <div className="lg:col-span-2">
-          <EditImageSideToolBar onVectorize={handleVectorize} />
+          <EditImageSideToolBar
+            onVectorize={handleVectorize}
+            onDownload={handleDownload}
+            setFileFormat={setFileFormat}
+          />
         </div>
       </div>
       {loading && <p>Loading...</p>}
