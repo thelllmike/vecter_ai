@@ -15,6 +15,7 @@ const UploadImagepage = () => {
   const [convertedImage, setConvertedImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [fileFormat, setFileFormat] = useState("svg");
+  const [isGrayscale, setIsGrayscale] = useState(false);
 
   const handleImageUpload = (imageData, file) => {
     setUploadedImageUrl(imageData);
@@ -31,9 +32,14 @@ const UploadImagepage = () => {
       const formData = new FormData();
       formData.append("file", uploadedFile);
 
+      const params = new URLSearchParams();
+      if (isGrayscale) {
+        params.append("grayscale", "true");
+      }
+
       const retryRequest = async (retries) => {
         try {
-          const res = await axios.post("http://127.0.0.1:8001/upload/", formData, {
+          const res = await axios.post(`http://127.0.0.1:8001/upload/?${params.toString()}`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -134,6 +140,7 @@ const UploadImagepage = () => {
             onVectorize={handleVectorize}
             onDownload={handleDownload}
             setFileFormat={setFileFormat}
+            setIsGrayscale={setIsGrayscale}
           />
         </div>
       </div>

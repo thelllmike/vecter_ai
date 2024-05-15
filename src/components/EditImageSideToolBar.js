@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import unlimited from "../images/unlimited.svg";
 import custom from "../images/custom.svg";
 
@@ -14,7 +14,17 @@ import { Switch } from "./ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Button } from "./ui/button";
 
-const EditImageSideToolBar = ({ onVectorize, onDownload, setFileFormat }) => {
+const EditImageSideToolBar = ({ onVectorize, onDownload, setFileFormat, setIsGrayscale }) => {
+  const [selectedOption, setSelectedOption] = useState("color");
+  const [bgTransparency, setBgTransparency] = useState(false);
+
+  const handleSwitchChange = (option) => {
+    setSelectedOption(option);
+    if (option !== "grayscale") {
+      setIsGrayscale(false);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex items-center justify-between gap-4 text-left">
@@ -36,58 +46,80 @@ const EditImageSideToolBar = ({ onVectorize, onDownload, setFileFormat }) => {
         <Label htmlFor="bg-transparency" className="">
           BG Transparency
         </Label>
-        <Switch className="data-[state=checked]:bg-theme-LightBlue " />
+        <Switch
+          checked={bgTransparency}
+          onCheckedChange={(checked) => setBgTransparency(checked)}
+          className="data-[state=checked]:bg-theme-LightBlue"
+        />
       </div>
       <div className="flex items-center justify-between gap-4 text-left">
         <Label htmlFor="color" className="">
           Color
         </Label>
-        <Switch className="data-[state=checked]:bg-theme-LightBlue " />
+        <Switch
+          checked={selectedOption === "color"}
+          onCheckedChange={() => handleSwitchChange("color")}
+          className="data-[state=checked]:bg-theme-LightBlue"
+        />
       </div>
-      <div className="flex items-center text-left">
-        <Tabs defaultValue="unlimited" className="w-full">
-          <TabsList className="w-full">
-            <TabsTrigger value="unlimited" className="w-1/2">
-              <img src={unlimited} alt="Unlimited" />
-              Unlimited
-            </TabsTrigger>
-            <TabsTrigger value="custom" className="w-1/2">
-              <img src={custom} alt="Custom" />
-              Custom
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="unlimited" className="flex flex-col gap-4">
-            <div className="flex items-center justify-between gap-4 text-left">
-              <Label htmlFor="grayscale" className="">
-                Grayscale
-              </Label>
-              <Switch className="data-[state=checked]:bg-theme-LightBlue " />
-            </div>
-            <div className="flex items-center justify-between gap-4 text-left">
-              <Label htmlFor="black-white" className="">
-                Black & White
-              </Label>
-              <Switch className="data-[state=checked]:bg-theme-LightBlue " />
-            </div>
-            <div className="flex items-center justify-between gap-4 text-left">
-              <Label htmlFor="file-format" className="">
-                File Format
-              </Label>
-              <Select onValueChange={setFileFormat}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="SVG" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="svg">SVG</SelectItem>
-                  <SelectItem value="jpg">JPG</SelectItem>
-                  <SelectItem value="png">PNG</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </TabsContent>
-          <TabsContent value="custom">Custom</TabsContent>
-        </Tabs>
+      <div className="flex items-center justify-between gap-4 text-left">
+        <Label htmlFor="grayscale" className="">
+          Grayscale
+        </Label>
+        <Switch
+          checked={selectedOption === "grayscale"}
+          onCheckedChange={() => {
+            setIsGrayscale(true);
+            handleSwitchChange("grayscale");
+          }}
+          className="data-[state=checked]:bg-theme-LightBlue"
+        />
       </div>
+      <div className="flex items-center justify-between gap-4 text-left">
+        <Label htmlFor="black-white" className="">
+          Black & White
+        </Label>
+        <Switch
+          checked={selectedOption === "blackWhite"}
+          onCheckedChange={() => handleSwitchChange("blackWhite")}
+          className="data-[state=checked]:bg-theme-LightBlue"
+        />
+      </div>
+      <div className="flex items-center justify-between gap-4 text-left">
+        <Label htmlFor="file-format" className="">
+          File Format
+        </Label>
+        <Select onValueChange={setFileFormat}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="SVG" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="svg">SVG</SelectItem>
+            <SelectItem value="jpg">JPG</SelectItem>
+            <SelectItem value="png">PNG</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      {selectedOption === "color" && (
+        <div className="flex items-center text-left">
+          <Tabs defaultValue="unlimited" className="w-full">
+            <TabsList className="w-full">
+              <TabsTrigger value="unlimited" className="w-1/2">
+                <img src={unlimited} alt="Unlimited" />
+                Unlimited
+              </TabsTrigger>
+              <TabsTrigger value="custom" className="w-1/2">
+                <img src={custom} alt="Custom" />
+                Custom
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="unlimited" className="flex flex-col gap-4">
+              {/* Additional content for unlimited */}
+            </TabsContent>
+            <TabsContent value="custom">Custom</TabsContent>
+          </Tabs>
+        </div>
+      )}
       <div className="mt-10 flex flex-col items-center gap-2 text-left">
         <Button
           className="w-full bg-theme-LightBlue hover:bg-theme-DarkBlue"
